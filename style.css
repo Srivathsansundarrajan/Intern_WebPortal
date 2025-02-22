@@ -1,0 +1,42 @@
+body{
+    padding:0px;
+     background: linear-gradient(to right,rgb(196, 196, 255),rgb(202, 202, 250),rgb(154, 154, 254));
+    
+}
+
+form {
+    width: 600px;
+    margin: auto;
+    background-color: #4e54c8;
+    color: rgb(255, 255, 255);
+    padding: 20px 50px 20px 50px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+
+form input[type="text"],input[type="number"],select{
+    width:100%;
+    height:5vh;
+    /* border:3px solid yellow; */
+    background-color:rgb(255, 255, 255);
+    border-radius: 5px; 
+    
+}
+form input[type="submit"]{
+    width:100%;
+    height:5vh;
+    font-weight: bolder;
+    background-color:rgb(255, 255, 255);
+    border-radius: 5px; 
+}
+form input[type="checkbox"],span{
+    font-size: 16px;
+    font-weight: 800;
+   
+}
+form input:focus,select:focus{
+    outline:none;
+    border:1px solid blue;
+    
+}
