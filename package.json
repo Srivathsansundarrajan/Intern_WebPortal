@@ -1,0 +1,21 @@
+{
+  "name": "intern_webportal",
+  "version": "1.0.0",
+  "main": "logincred.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Srivathsansundarrajan/Intern_WebPortal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Srivathsansundarrajan/Intern_WebPortal/issues"
+  },
+  "homepage": "https://github.com/Srivathsansundarrajan/Intern_WebPortal#readme",
+  "description": ""
+}

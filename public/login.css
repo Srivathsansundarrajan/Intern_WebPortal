@@ -3,9 +3,34 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     height: 100vh;
     
+}
+.login_navigator{
+    display: flex;
+    flex-direction: row;
+    width:350px;
+    justify-content:space-between;
+    margin-top:2px;
+
+
+}
+
+.login_navigator a{
+    color: white;
+    background-color: #2008a7b0;
+    text-align: center;
+
+    width:180px;
+    height:5vh;
+    padding:8px;
+    box-sizing: border-box;   
+    border-radius:8px;
+    text-decoration: none;
+
+    font-size: 14px;
 }
 .wrapper{
    
@@ -15,10 +40,12 @@ body{
     text-align: center;
 
     width:350px;
-    height:50vh;
+    min-height:50vh;
+    height:auto;
     padding:30px;
     box-sizing: border-box;
     border:2px solid #2008a7;
+    /* opacity: .9; */
 
    
 }
@@ -27,6 +54,7 @@ body{
     height:70px;
     border-radius: 50px;
     margin-bottom:15px;
+    
     
 }
 .wrapper .inp_field{

@@ -2,31 +2,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Student Login</title>
     <link rel = "icon" type = "image/x-icon" href = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.50EFHXxDyH-m9fIlhwNATQAAAA%26pid%3DApi&f=1&ipt=b362709b0a6bd98db2513072b81ef58951ae89b91849a46143522b324ca476a0&ipo=images">
     <link rel = "stylesheet" href="login.css">
 </head>
 <body>
+    
+    
+    
+    
     <div class="wrapper">
         
         <img src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.50EFHXxDyH-m9fIlhwNATQAAAA%26pid%3DApi&f=1&ipt=b362709b0a6bd98db2513072b81ef58951ae89b91849a46143522b324ca476a0&ipo=images" alt = "ssn logo">
         
+        
+       
+        <form action="stu_login" method="post">
+
+        
         <div class="inp_field">
-            <label for = "login_email" >Student email</label><br>
-            <input type ="email" name = "login_email" id = "login_email" required ><br>
+            <label for = "email" >Student email</label><br>
+            <input type ="email" name = "email" id = "email" required ><br>
+            <a href="#" style="color: rgb(255, 178, 44);font-size:12px;position: absolute;text-decoration: none;" id = "invalid_disp"></a>
         </div>
+        
 
         <div class="inp_field">
             <label for = "psd" >Password</label><br>
             <input type = "password" name = "psd" id = "psd" required ><br>
-            <a href="#" style="color: aliceblue;font-size:10px;">Forgot Password</a>
+            
+            <a href="forgotPassword.html" style="color: aliceblue;font-size:10px;">Forgot Password</a>
+           
         </div>
 
+        <input type = "text" name = "user" id="user" value ="student" hidden>
         <input type = "submit" value="Login">
 
+    </form>
 
 
     </div>
+    
+
+    <div class="login_navigator">
+        <a href = "studentLogin.html">Student Login</a>         
+        <a href = "adminLogin.html">Staff Login</a>
+    </div>
+   
+    <script src="errorHandling.js"></script>
     
 </body>
 </html>
