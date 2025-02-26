@@ -4,7 +4,21 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const port = 8080;
 
+
+const session = require('express-session');
+
+
+
+
+
 const app = express();
+
+app.use(session({
+    secret: 'yourSecretKey',
+    resave: false,
+    saveUninitialized: true,
+}));
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"public")));
 
@@ -42,6 +56,10 @@ app.get("/",(req,res)=>{
 
 });
 
+app.get("/getUserSession", (req, res) => {
+    res.json({ userEmail: req.session.userEmail || null });
+});
+
 app.post("/logon",async(req,res)=>{
     const {email,psd,user} = req.body;
 
@@ -63,12 +81,12 @@ app.post("/logon",async(req,res)=>{
 
 app.post("/stu_login",async(req,res)=>{
     const {email,psd,user} = req.body;
-    const result = await user_login.findOne({email:email,psd:psd,user:user});
-
+    const result = await user_login.findOne({email:email,psd:psd,user:user}); 
     
     try{
         if(result){
-            // res.send("Hello");
+             // Assume user successfully logs in and `userEmail` is retrieved from backend
+            req.session.userEmail = email; 
             res.sendFile(path.join(__dirname,"public","form.html"));
     
         }
@@ -91,7 +109,7 @@ app.post("/admin_login",async(req,res)=>{
     try{
         if(result){
             // res.send("Hello");
-            res.sendFile(path.join(__dirname,"public","form.html"));
+            res.sendFile(path.join(__dirname,"public","adminPage.html"));
     
         }
         else{

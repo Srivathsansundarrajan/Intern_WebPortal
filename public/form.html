@@ -9,9 +9,14 @@
 </head>
 <body>
     <div class="form">
-    <form action = "https://script.google.com/macros/s/AKfycbwZljB4kdQF8zj3_1xGcsXVnf_KeVwx-v1Z08TEodcbwYhpo-IuNOi0yhGRxv5iLdF7/exec" method="post">
+    <form action = "https://script.google.com/macros/s/AKfycbyX7HpotPPPCih-ZBYIEl55bjel2GPP8FJnKzLb5j3VJdoNLZSElHcuNsi-vqVW9QLX/exec" method="post">
         <h3 style="text-align: center;color: #b7e7ff;">Student Internship Details Form</h3>
         
+        <div class="inp_field">
+            <label for="email">College Mail Id</label><br>
+            <input type="email" name="email" id="email" required><br>
+        </div>
+
         <div class="inp_field">
             <label for="reg">Register Number</label><br>
             <input type="text" name="reg" id="reg" required><br>
@@ -192,6 +197,63 @@
     
     
     <input type = submit >
+
+    <script>
+
+            window.onload = function() {
+            // Fetch logged-in user's email from the backend
+            fetch('/getUserSession')
+                .then(response => response.json())
+                .then(data =>{
+                    if (data.userEmail) {
+                        //alert("Hello");
+                        document.getElementById("email").value = data.userEmail; // Auto-fill email field
+                        fetchUserDataFromGoogleSheets(data.userEmail);  // Fetch details from Google Sheets
+                    } else {
+                        console.log("No user logged in.");
+                    }
+                })
+                .catch(error => console.error("Error fetching session:", error));
+        };
+
+// Function to fetch user data from Google Sheets using AppScript
+function fetchUserDataFromGoogleSheets(userEmail) {
+    const url = `https://script.google.com/macros/s/AKfycbyQ_pC3mL_WFlpAkPSqNthXfkZ2JnQ-tmzeZo1PcO8_NT9LDGPOQ4NYdae8eMJJJXIt/exec?email=${encodeURIComponent(userEmail)}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.log("No data found for this user.");
+            } else {
+                document.getElementById("reg").value = data.reg || "a";
+                document.getElementById("name").value = data.name || "b";
+                document.getElementById("title").value = data.title || "c";
+                document.getElementById("phno").value = data.phno || "d";
+                document.getElementById("sec").value = data.sec || "e";
+                document.getElementById("obtained_intership").value = data.obtained_intership || "f";
+                document.getElementById("period").value = data.period || "";
+                document.getElementById("st_date").value = data.st_date || "";
+                document.getElementById("end_date").value = data.end_date || "";
+                document.getElementById("cmpy_name").value = data.cmpy_name || "";
+                document.getElementById("placement_src").value = data.placement_src || "";
+                document.getElementById("stipend").value = data.stipend || "";
+                document.getElementById("intern_type").value = data.intern_type || "";
+                document.getElementById("intern_reg").value = data.intern_reg || "";
+                document.getElementById("permission_letter").value = data.permission_letter || "";
+                document.getElementById("completion_certificate").value = data.completion_certificate || "";
+                document.getElementById("intern_report").value = data.intern_report || "";
+                document.getElementById("stu_feedback").value = data.stu_feedback || "";
+                document.getElementById("emp_feedback").value = data.emp_feedback || "";
+            }
+        })
+        .catch(error => console.error("Error fetching data from Google Sheets:", error));
+}
+
+
+    </script>
+
+    
 </form>
 </div>
 </body>
